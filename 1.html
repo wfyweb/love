@@ -30,7 +30,16 @@
   <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
   <style>
       *{margin:0;padding:0;}
-      kbd{display:inline-block;    text-transform: uppercase;width: 40px;height: 40px;border:1px solid red;position: relative;
+      main{
+          text-align: center;
+      }
+      kbd{
+          display:inline-block;
+          text-transform: uppercase;
+          width: 40px;
+          height: 40px;
+          margin:100px auto;
+          border:1px solid red;position: relative;
       }
       kbd > button{
         display: none;
@@ -44,14 +53,20 @@
   </style>
  </head>
  <body>
+  <main>
     <kbd>
         <button>编辑</button>
     </kbd>
+  </main>
+
   <script type="text/javascript">
       var bottom = document.querySelector("button");
       bottom.onclick = function(){
-        prompt('pla  wfy',1123);
+        prompt('wfy');
       };
+      // prompt(text,defaultText)
+      // text  可选。要在对话框中显示的纯文本（而不是 HTML 格式的文本）。
+      // defaultText 可选。默认的输入文本。
   </script>
  </body>
 </html>
