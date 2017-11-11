@@ -1,0 +1,81 @@
+
+<!doctype html>
+<!--
+
+  .--,       .--,
+ ( (  \.---./  ) )
+  '.__/o   o\__.'
+     {=    =}
+      >  -  <
+     /       \
+    //       \
+   //|   .   |\
+   "'\       /'"_.-~`'-.
+      \  _  /--'
+    ___)( )(___
+   (((__) (__)))
+
+   the valiant knights of programming who toil away.
+
+-->
+<html lang="zh-Hans">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Handsome</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+    <header></header>
+    <main>
+        <div class="wrapper" id="mainXXXXX">
+
+        </div>
+    </main>
+    <footer></footer>
+  <script type="text/javascript">
+      keys = {
+        '0':{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+        '1':{0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+        '2':{0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+        'length':3
+      }
+      hash = {
+        'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 'r': 'renren.com', 't': 'tianya.com', 'y': 'youtube.com', 'u': 'uc.com' , 'i': 'iqiyi.com', 'o': 'opera.com', 'p': undefined, 'a': 'acfun.tv', 's': 'sohu.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
+      }
+
+
+      // 遍历 keys，生成 kbd 标签
+      index = 0
+      while(index < keys['length']){
+        divXXXXX = document.createElement('div')
+        mainXXXXX.appendChild(divXXXXX)
+        row = keys[index]  // 第一个数组  第二个数组  第三个数组
+        //console.log(row);
+        index2 = 0
+        while(index2 < row['length']){
+            kbdXXXX = document.createElement('kbd')
+            kbdXXXX.textContent = row[index2]
+            buttonX = document.createElement('button')
+            buttonX.textContent = "编辑"
+
+            buttonX.id = row[index2]
+            buttonX.onclick = function(xyz){
+                // xyz['target']就是用户点击的元素
+                key = xyz['target']['id'] // q w e r y
+                x = prompt('给我一个网址') // qq.com
+                hash[key] = x //
+            }
+
+            divXXXXX.appendChild(kbdXXXX)
+            kbdXXXX.appendChild(buttonX)
+            index2 ++
+        }
+        index = index+1
+      }
+  </script>
+ </body>
+</html>
