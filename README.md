@@ -1,29 +1,31 @@
 # nav-dome
 
-ÕâÊÇÒ»¸öµ¼º½£¬Ö÷Òª¹¦ÄÜÓÃ¼üÅÌÌø×ªÏà¶ÔÓ¦µÄÍøÕ¾£»
+è¿™æ˜¯ä¸€ä¸ªå¯¼èˆªï¼Œä¸»è¦åŠŸèƒ½ç”¨é”®ç›˜è·³è½¬ç›¸å¯¹åº”çš„ç½‘ç«™ï¼›
 
 1.html
 
-´´½¨kbd±êÇ©£¨¶¨Òå¼üÅÌÎÄ±¾¡££©
-µã»÷³öÏÖ×Ô¶¨ÒåÊäÈë¿ò
+åˆ›å»ºkbdæ ‡ç­¾ï¼ˆå®šä¹‰é”®ç›˜æ–‡æœ¬ã€‚ï¼‰
+ç‚¹å‡»å‡ºçŽ°è‡ªå®šä¹‰è¾“å…¥æ¡†
 
 2.html
 
-¶¯Ì¬´´½¨kbd±êÇ©£º
+åŠ¨æ€åˆ›å»ºkbdæ ‡ç­¾ï¼š
 
-ÀûÓÃJSON¶ÔÏó»ñÈ¡Êý¾ÝwhileÑ­»·´´½¨kbd
+åˆ©ç”¨JSONå¯¹è±¡èŽ·å–æ•°æ®whileå¾ªçŽ¯åˆ›å»ºkbd
 
-µã»÷ºóÊäÈëÍøÕ¾
+ç‚¹å‡»åŽè¾“å…¥ç½‘ç«™
 
-
-
-
-
-
-
-
+Â äº‹ä»¶å§”æ‰˜ e['targer']     e['terget']['id']
+ 
+ è®°å½•ç‚¹å‡»å…ƒç´ ï¼Œè¾“å…¥çš„ä¿¡æ¯
+ 
+ è®¾ç½®æœ¬åœ°ç¼“å­˜ localStorage.setItem('zzz', JSON.stringify(hash))
 
 
 
 
-Î´Íê³É£¬´ý¸üÐÂ
+
+
+
+
+æœªå®Œæˆï¼Œå¾…æ›´æ–°
