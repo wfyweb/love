@@ -22,7 +22,11 @@
  设置本地缓存 localStorage.setItem('zzz', JSON.stringify(hash))
 
 
-
+3.html
+ // 取出 localStorage 中的 zzz 对应的 hash
+ 
+ localStorage.setItem( "name",ogj )
+ localStorage.getItem( "name" )
 
 
 
