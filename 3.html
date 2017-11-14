@@ -1,0 +1,108 @@
+
+<!doctype html>
+<!--
+
+  .--,       .--,
+ ( (  \.---./  ) )
+  '.__/o   o\__.'
+     {=    =}
+      >  -  <
+     /       \
+    //       \
+   //|   .   |\
+   "'\       /'"_.-~`'-.
+      \  _  /--'
+    ___)( )(___
+   (((__) (__)))
+
+   the valiant knights of programming who toil away.
+
+-->
+<html lang="zh-Hans" onselectstart="return false">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Handsome</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+      main{
+        margin:100px auto;
+      }
+      kbd{box-shadow:0 0 5px ;background:#999;border-radius:2px;border:0;color: #fff;line-height:4em;margin:0 2px 2px 0;font-size: 16px;font-weight: 400;font-family:Microsoft Yahei; }
+      kbd button{
+        background:none;
+        border: 1px solid #000;
+        outline: none;
+        cursor:pointer ;
+      }
+  </style>
+ </head>
+ <body>
+    <header></header>
+    <main>
+        <div class="wrapper" id="mainXXXXX">
+
+        </div>
+    </main>
+    <footer></footer>
+  <script type="text/javascript">
+      keys = {
+        '0':{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+        '1':{0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+        '2':{0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+        'length':3
+      }
+      hash = {
+        'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 'r': 'renren.com', 't': 'tianya.com', 'y': 'youtube.com', 'u': 'uc.com' , 'i': 'iqiyi.com', 'o': 'opera.com', 'p': undefined, 'a': 'acfun.tv', 's': 'sohu.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
+      }
+
+      // 取出 localStorage 中的 zzz 对应的 hash
+      hashInLocalStorage = JSON.parse(localStorage.getItem("name") || 'null');
+      if(hashInLocalStorage){
+        hash = hashInLocalStorage
+      }
+
+      //遍历keys 循环kbd
+      index = 0;
+
+      while(index<keys['length']){
+        oDiv = document.createElement('div');
+        mainXXXXX.appendChild(oDiv);
+        row = keys[index];// 数组
+
+        index2 = 0;
+        while(index2<row['length']){
+          oKbd = document.createElement('kbd');
+          oKbd.textContent = row[index2];
+          oButton = document.createElement('button');
+          oButton.textContent = '点击';
+          oButton.id = row[index2];
+          oButton.onclick = function(e){
+            //e['target'] // e['target'] 就是用户点击的元素
+            key = e['target']['id'];
+            x = prompt('请输入网址');
+            hash[key] = x;
+            localStorage.setItem('name',JSON.stringify(hash));
+
+          };
+          oDiv.appendChild(oKbd);
+          oKbd.appendChild(oButton);
+          //console.log(index2);
+          index2++;
+        };
+        index++;
+      };
+
+
+      //按下键盘 跳转网址
+      document.onkeypress = function(e){
+        key = e['key'];
+        website = hash[key];
+        window.open('http://'+website,'_blank');
+      }
+  </script>
+ </body>
+</html>
