@@ -28,7 +28,20 @@
  localStorage.setItem( "name",ogj )
  localStorage.getItem( "name" )
 
+4.html
+封装函数，方便调用。
 
+  1. 初始化数据
+    var hashA = init()
+    var keys = hashA['keys']
+    var hash = hashA['hash']
+
+   2. 生成键盘
+    遍历 keys，生成 kbd 标签
+    generateKeyboard(keys, hash)
+
+   3. 监听用户动作
+    listenToUser(hash)
 
 
 
