@@ -32,23 +32,39 @@
 		index = 0
 		while(index< keys['length']){ // 0 1 2
 			divXXXXX = document.createElement('div')
+			divXXXXX.className = 'row' 
 			keyboard.appendChild(divXXXXX)
 			row = keys[index]  // 第一个数组  第二个数组  第三个数组
 			index2 = 0
 			while(index2< row['length']){ // 0~9   0~8   0~6
 				kbdXXXXX = document.createElement('kbd')
-				kbdXXXXX.textContent = row[index2]
+				span = document.createElement('span')
+				span.className = 'text'
+				kbdXXXXX.appendChild(span)
+				span.textContent = row[index2]
 				buttonX = document.createElement('button')
 				buttonX.textContent = '编辑'
 				buttonX.id = row[index2]
-				buttonX.onclick = function(xzkjcnxlkcjlk){
-					// xzkjcnxlkcjlk['target'] 就是用户点击的元素
-					key = xzkjcnxlkcjlk['target']['id'] // q w e r t
+				// 添加 img 图标
+				img = document.createElement('img')
+				// 错误处理
+				if(hash[row[index2]]){
+					img.src = 'http://'+ hash[row[index2]] +'/favicon.ico'
+				}else{
+					img.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+				}
+				img.onerror = function(e){
+					e.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+				}
+				buttonX.onclick = function(e){
+					// e['target'] 就是用户点击的元素
+					key = e['target']['id'] // q w e r t
 					x = prompt('给我一个网址') // qq.com
 					hash[key] = x  // hash 变更
 					localStorage.setItem('zzz', JSON.stringify(hash))
 					console.log(hash)
 				}
+				kbdXXXXX.appendChild(img)
 				kbdXXXXX.appendChild(buttonX)
 				divXXXXX.appendChild(kbdXXXXX)
 				index2 = index2 + 1
@@ -56,10 +72,9 @@
 			index = index+1
 		}
 
-		document.onkeypress = function(xzkjcnxlkcjlk){
-			key = xzkjcnxlkcjlk['key'] // q w e
+		document.onkeypress = function(e){
+			key = e['key'] // q w e
 			website = hash[key]
-			location.href = 'http://'+website
 			window.open('http://'+website, '_blank')
 		}
 	</script>
