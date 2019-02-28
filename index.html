@@ -14,74 +14,112 @@
 	</main>
 	<footer></footer>
 	<script>
-		keys = {
-			'0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
-			'1': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
-			'2': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
-			'length': 3
+		// 1.初始化
+		var init = init()
+		var keys = init['keys']
+		var hash = init['hash']
+
+		// 2.生成键盘
+		generateKeyboard(keys,hash)
+
+		// 3.监听用户行为
+		listenUser(hash)
+
+		// 工具类函数
+		function init(){
+			var keys = {
+				'0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+				'1': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+				'2': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+				'length': 3
+			}
+			var hash = {'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 'r': 'renren.com', 't': 'tianya.com', 'y': 'youtube.com', 'u': 'uc.com' , 'i': 'iqiyi.com', 'o': 'opera.com', 'p': undefined, 'a': 'acfun.tv', 's': 'sohu.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'}
+			// 取出 localStorage 中的 zzz 对应的 hash
+			var hashInLocalStorage = getFromLocalStorage('zzz')
+			if(hashInLocalStorage){
+				hash = hashInLocalStorage
+			}
+			return {
+				'keys':keys,
+				'hash':hash
+			}
 		}
-		hash = {'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 'r': 'renren.com', 't': 'tianya.com', 'y': 'youtube.com', 'u': 'uc.com' , 'i': 'iqiyi.com', 'o': 'opera.com', 'p': undefined, 'a': 'acfun.tv', 's': 'sohu.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
+		
+		
+		function generateKeyboard(keys,hash){
+			// 遍历 keys，生成 kbd 标签
+			for(var i=0;i< keys['length'];i++){
+				var divTag = createEle('div',{className:'row'})
+				keyboard.appendChild(divTag)
+				var row = keys[i]  // 第一个数组  第二个数组  第三个数组
+				for(var j=0;j<row['length'];j++){
+
+					var spanTag = createEle('span',{className:'text',textContent:row[j]})
+
+					var kbdTag = createEle('kbd',{className:'key'})
+
+					var imgTag = createImg(hash[row[j]])
+
+					var buttonTag = createButton(row[j])
+					kbdTag.appendChild(spanTag)
+					kbdTag.appendChild(imgTag)
+					kbdTag.appendChild(buttonTag)
+
+					divTag.appendChild(kbdTag)
+				}
+			}
 		}
-		// 取出 localStorage 中的 zzz 对应的 hash
-		hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null')
-		if(hashInLocalStorage){
-			hash = hashInLocalStorage
+		
+		function listenUser(hash){
+			document.onkeypress = function(e){
+				var key = e['key'] // q w e
+				var website = hash[key]
+				window.open('http://'+website, '_blank')
+			}
 		}
 
-		// 遍历 keys，生成 kbd 标签
-		index = 0
-		while(index< keys['length']){ // 0 1 2
-			divXXXXX = document.createElement('div')
-			divXXXXX.className = 'row' 
-			keyboard.appendChild(divXXXXX)
-			row = keys[index]  // 第一个数组  第二个数组  第三个数组
-			index2 = 0
-			while(index2< row['length']){ // 0~9   0~8   0~6
-				kbdXXXXX = document.createElement('kbd')
-				span = document.createElement('span')
-				span.className = 'text'
-				kbdXXXXX.appendChild(span)
-				span.textContent = row[index2]
-				buttonX = document.createElement('button')
-				buttonX.textContent = '编辑'
-				buttonX.id = row[index2]
-				// 添加 img 图标
-				img = document.createElement('img')
+		function getFromLocalStorage(item){
+			return JSON.parse(localStorage.getItem(item) || 'null')
+		}
+				
+		function createEle(tagName,attribute){
+			var element = document.createElement(tagName)
+			if(attribute){
+				for( key in attribute){
+					element[key] = attribute[key]
+				}
+			}
+			return element
+		}
+		
+		function createImg(domin){
+			var img = createEle('img')
 				// 错误处理
-				if(hash[row[index2]]){
-					img.src = 'http://'+ hash[row[index2]] +'/favicon.ico'
+				if(domin){
+					img.src = 'http://'+ domin +'/favicon.ico'
 				}else{
 					img.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
 				}
 				img.onerror = function(e){
 					e.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
 				}
-				buttonX.onclick = function(e){
-					// e['target'] 就是用户点击的元素
-					newButton = e.target
-					key = newButton['id'] // q w e r t
-					x = prompt('给我一个网址') // qq.com
-					handleImg = newButton.previousSibling // 获取当前button 上一个节点img
-					handleImg.src = 'http://wfyweb.com/yuan/images/handsome1.ico'
-					handleImg.onerror = function(e){
-						e.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
-					}
-					hash[key] = x  // hash 变更
-					localStorage.setItem('zzz', JSON.stringify(hash))
-					console.log(hash)
-				}
-				kbdXXXXX.appendChild(img)
-				kbdXXXXX.appendChild(buttonX)
-				divXXXXX.appendChild(kbdXXXXX)
-				index2 = index2 + 1
-			}
-			index = index+1
+			return img 
 		}
-
-		document.onkeypress = function(e){
-			key = e['key'] // q w e
-			website = hash[key]
-			window.open('http://'+website, '_blank')
+		function createButton (id){
+			var button = createEle('button',{id:id,textContent:'编辑'})
+			button.onclick = function(e){
+				var newButton = e.target
+				var key = newButton['id'] // q w e r t
+				var x = prompt('给我一个网址') // qq.com
+				var handleImg = newButton.previousSibling // 获取当前button 上一个节点img
+				handleImg.src = 'http://'+ x +'/favicon.ico'
+				handleImg.onerror = function(e){
+					e.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+				}
+				hash[key] = x  // hash 变更
+				localStorage.setItem('zzz', JSON.stringify(hash))
+			}
+			return button 
 		}
 	</script>
 </body>
