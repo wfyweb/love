@@ -58,8 +58,14 @@
 				}
 				buttonX.onclick = function(e){
 					// e['target'] 就是用户点击的元素
-					key = e['target']['id'] // q w e r t
+					newButton = e.target
+					key = newButton['id'] // q w e r t
 					x = prompt('给我一个网址') // qq.com
+					handleImg = newButton.previousSibling // 获取当前button 上一个节点img
+					handleImg.src = 'http://wfyweb.com/yuan/images/handsome1.ico'
+					handleImg.onerror = function(e){
+						e.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+					}
 					hash[key] = x  // hash 变更
 					localStorage.setItem('zzz', JSON.stringify(hash))
 					console.log(hash)
